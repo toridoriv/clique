@@ -1,0 +1,74 @@
+{
+  "name": "@toridoriv/clique",
+  "version": "0.1.0",
+  "description": "Easily create boilerplate code for command-line applications in Node.js.",
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "main": "./lib/main.cjs",
+  "module": "./lib/main.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/main.d.ts",
+        "default": "./lib/main.js"
+      },
+      "require": {
+        "types": "./lib/main.d.cts",
+        "default": "./lib/main.cjs"
+      }
+    }
+  },
+  "types": "./lib/main.d.ts",
+  "author": {
+    "name": "Victoria Rodriguez",
+    "email": "vrodriguezfe@icloud.com",
+    "url": "https://github.com/toridoriv"
+  },
+  "homepage": "https://github.com/toridoriv/clique#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toridoriv/clique.git"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "bugs": {
+    "url": "https://github.com/toridoriv/clique/issues",
+    "email": "vrodriguezfe@icloud.com"
+  },
+  "scripts": {
+    "chmod": "find sbin -type f -not -name '*utils*' -not -name '*helpers*' -exec chmod +x {} \\;",
+    "prebuild": "rm -rf lib bin",
+    "build": "tsup",
+    "postbuild": "npm run fix:build",
+    "fix:build": "scripty"
+  },
+  "devDependencies": {
+    "@cliffy/command": "npm:@jsr/cliffy__command@^1.0.0-rc.8",
+    "@cliffy/flags": "npm:@jsr/cliffy__flags@^1.0.0-rc.8",
+    "@toridoriv/eslint-config": "github:toridoriv/eslint-config",
+    "@toridoriv/toolbox": "github:toridoriv/toolbox",
+    "@toridoriv/toolkit": "github:toridoriv/toolkit",
+    "@types/node": "^24.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "eslint": "^9.39.2",
+    "jest": "^30.2.0",
+    "prettier": "^3.7.4",
+    "scripty": "github:toridoriv/scripty",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "typescript": "$typescript"
+  },
+  "config": {
+    "scripty": {
+      "path": "sbin"
+    }
+  },
+  "dependencies": {
+    "awilix": "^12.0.5"
+  }
+}

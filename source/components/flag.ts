@@ -1,4 +1,4 @@
-import type { Any, Merge } from "@toridoriv/toolbox";
+import type { Any as SafeAny, Merge } from "@toridoriv/toolbox";
 import { coerce } from "@toridoriv/toolbox";
 
 import type { ArrayToObject, ConflictingUnion } from "../shared/collections.ts";
@@ -14,26 +14,26 @@ export namespace Flag {
     boolean: boolean;
   };
 
-  export type AnyFlag = Flag<Flag.Definition, boolean>;
+  export type Any = Flag<Flag.Definition, boolean>;
 
   /**
    * Converts an array of {@link Properties|flag properties} to an options object.
    *
    * @template Flags - The array of flag properties.
    */
-  export type ToOptions<Flags extends AnyFlag[]> = ToDiscriminatedOptions<Flags>;
+  export type ToOptions<Flags extends Any[]> = ToDiscriminatedOptions<Flags>;
 
   export type ToDiscriminatedOptions<
-    T extends Any.Array,
-    R extends Any.Object = GetOptions<ArrayToObject<T>>,
+    T extends SafeAny.Array,
+    R extends SafeAny.Object = GetOptions<ArrayToObject<T>>,
   > = T extends []
     ? R
     : T extends [infer Head]
-      ? Head extends Flag<infer Def, Any, infer Conflicts>
+      ? Head extends Flag<infer Def, SafeAny, infer Conflicts>
         ? ConflictingUnion<R, Flag.Definition.ToOptionName<Def>, Conflicts[number]>
         : R
       : T extends [infer Head, ...infer Tail]
-        ? Head extends Flag<infer Def, Any, infer Conflicts>
+        ? Head extends Flag<infer Def, SafeAny, infer Conflicts>
           ? ToDiscriminatedOptions<
               Tail,
               ConflictingUnion<R, Flag.Definition.ToOptionName<Def>, Conflicts[number]>
@@ -155,9 +155,9 @@ export namespace Flag {
      * @template FullTypeMap - The merged type mapping.
      */
     export type ToValueType<
-      F extends AnyFlag,
-      TypeMap extends Any.Object = {},
-      FullTypeMap extends Any.Object = Merge<TypeMap, BaseTypeMapping>,
+      F extends Any,
+      TypeMap extends SafeAny.Object = {},
+      FullTypeMap extends SafeAny.Object = Merge<TypeMap, BaseTypeMapping>,
     > = GetOptionType<F, FullTypeMap>;
 
     /**
@@ -203,8 +203,8 @@ export namespace Flag {
   }
 
   type GetOptionType<
-    F extends AnyFlag,
-    M extends Any.Object,
+    F extends Any,
+    M extends SafeAny.Object,
     Parsed extends Definition.ParseArgument<F["definition"]> = Definition.ParseArgument<
       F["definition"]
     >,
@@ -213,12 +213,12 @@ export namespace Flag {
   > = Parsed["optional"] extends true ? Type | undefined : Type;
 
   type GetOptions<
-    T extends Record<number, AnyFlag>,
-    M extends Any.Object = BaseTypeMapping,
+    T extends Record<number, Any>,
+    M extends SafeAny.Object = BaseTypeMapping,
   > = {
     [K in keyof T as K extends number
       ? Definition.ToOptionName<T[K]["definition"]>
-      : never]: T[K] extends AnyFlag ? Definition.ToValueType<T[K], M> : never;
+      : never]: T[K] extends Any ? Definition.ToValueType<T[K], M> : never;
   };
 }
 

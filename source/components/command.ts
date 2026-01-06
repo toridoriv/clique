@@ -4,14 +4,14 @@ import type { Push } from "../shared/collections.ts";
 import { Flag } from "./flag.ts";
 
 export namespace Command {
-  export type AnyCommand = Command<Flag.AnyFlag[]>;
+  export type AnyCommand = Command<Flag.Any[]>;
 
   export type FlagsOf<C> = C extends Command<infer F> ? F : never;
 
   export type OptionsOf<C> = Flag.ToOptions<FlagsOf<C>>;
 }
 
-export class Command<Flags extends Flag.AnyFlag[] = []> {
+export class Command<Flags extends Flag.Any[] = []> {
   constructor(
     public readonly name: string,
     public readonly flags: Flags = coerce([]),

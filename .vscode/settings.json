@@ -1,50 +1,36 @@
 {
   "[css]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[html]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[javascript]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[jsonc]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[markdown]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
   "[typescript]": {
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
   },
@@ -65,5 +51,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.suggest.autoImports": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "eslint.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+  "editor.rulers": [80, 130]
 }

@@ -8,7 +8,7 @@
     "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
     "keyofStringsOnly": false,
-    "maxNodeModuleJsDepth": 3,
+    "maxNodeModuleJsDepth": 4,
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmit": true,

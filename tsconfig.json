@@ -26,23 +26,11 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "esnext",
-    "typeRoots": [
-      "./node_modules/@types/"
-    ],
-    "types": [
-      "node"
-    ],
+    "typeRoots": ["./node_modules/@types/"],
+    "types": ["node"],
     "useUnknownInCatchVariables": true
   },
-  "exclude": [
-    ".tmp",
-    "*.log",
-    "coverage",
-    "dist",
-    "logs",
-    "node_modules",
-    "tmp"
-  ],
+  "exclude": [".tmp", "*.log", "coverage", "dist", "logs", "node_modules", "tmp"],
   "typeAcquisition": {
     "enable": false
   }

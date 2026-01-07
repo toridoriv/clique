@@ -56,8 +56,19 @@ export type BuildTuple<N extends number, List extends Any.Array = []> =
       ? List
       : BuildTuple<N, [...List, Any]>;
 
+/**
+ * Appends an element to the end of an array type.
+ *
+ * @template T - The array type.
+ * @template U - The element type to append.
+ */
 export type Push<T extends Any.Array, U> = [...T, U];
 
+/**
+ * Gets the length of an array type.
+ *
+ * @template T - The array type.
+ */
 export type Length<T extends Any.Array> = T["length"];
 
 /**

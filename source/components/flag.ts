@@ -14,6 +14,9 @@ export namespace Flag {
     boolean: boolean;
   };
 
+  /**
+   * Represents any {@link Flag|flag} instance.
+   */
   export type Any = Flag<Flag.Definition, boolean>;
 
   /**
@@ -222,15 +225,39 @@ export namespace Flag {
   };
 }
 
+/**
+ * Represents a command-line flag or option.
+ *
+ * @template T         - The flag definition type. @example "--first-name <value:string>"
+ * @template Collect   - Indicates if the flag can collect multiple values. If so, the option value will be an array.
+ * @template Conflicts - An array of flag names that conflict with this flag.
+ */
 export class Flag<
   T extends Flag.Definition,
   Collect extends boolean = false,
   Conflicts extends string[] = string[],
 > {
   public constructor(
+    /**
+     * The flag definition string.
+     *
+     * @example
+     *
+     * "--first-name <value:string>"
+     *
+     */
     public readonly definition: T,
+    /**
+     * A brief description of the flag.
+     */
     public description: string,
+    /**
+     * Indicates if the flag can collect multiple values. If so, the option value will be an array.
+     */
     public readonly collect: Collect = false as Collect,
+    /**
+     * An array of flag names that conflict with this flag.
+     */
     public readonly conflicts: Conflicts = coerce([]),
   ) {}
 }
